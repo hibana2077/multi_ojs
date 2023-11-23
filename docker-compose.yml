@@ -3,8 +3,16 @@ version: "3.6"
 networks:
   web:
     external: false
-  inside:
+    driver: bridge
+  ojs1_net:
     external: false
+    driver: bridge
+  ojs2_net:
+    external: false
+    driver: bridge
+  ojs3_net:
+    external: false
+    driver: bridge
 
 services:
   traefik:
@@ -27,6 +35,9 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       - web
+      - ojs1_net
+      - ojs2_net
+      - ojs3_net
 
   ojs1:
     env_file:
@@ -43,8 +54,7 @@ services:
       - ./volumes_ojs1/public:/var/www/html/public
       - ./volumes_ojs1/config/ojs.config.inc.php:/var/www/html/config.inc.php
     networks:
-      - web
-      - inside
+      - ojs1_net
     depends_on:
       - db1
     restart: always
@@ -88,8 +98,7 @@ services:
       - ./volumes_ojs2/public:/var/www/html/public
       - ./volumes_ojs2/config/ojs.config.inc.php:/var/www/html/config.inc.php
     networks:
-      - web
-      - inside
+      - ojs2_net
     depends_on:
       - db2
     restart: always
@@ -133,8 +142,7 @@ services:
       - ./volumes_ojs3/public:/var/www/html/public
       - ./volumes_ojs3/config/ojs.config.inc.php:/var/www/html/config.inc.php
     networks:
-      - web
-      - inside
+      - ojs3_net
     depends_on:
       - db3
     restart: always
