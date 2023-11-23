@@ -61,8 +61,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ojs1.rule=PathPrefix(`/ojs1`)"
-      - "traefik.http.middlewares.ojs1-stripprefix.stripprefix.prefixes=/ojs1"
-      - "traefik.http.routers.ojs1.middlewares=ojs1-stripprefix"
+      - "traefik.http.middlewares.ojs1-replacepathregex.replacepathregex.regex=^/ojs1/(.*)"
+      - "traefik.http.middlewares.ojs1-replacepathregex.replacepathregex.replacement=/$$1"
+      - "traefik.http.routers.ojs1.middlewares=ojs1-replacepathregex"
       - "traefik.http.routers.ojs1.entrypoints=web"
       - "traefik.http.services.ojs1.loadbalancer.server.port=80"
 
@@ -108,8 +109,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ojs2.rule=PathPrefix(`/ojs2`)"
-      - "traefik.http.middlewares.ojs2-stripprefix.stripprefix.prefixes=/ojs2"
-      - "traefik.http.routers.ojs2.middlewares=ojs2-stripprefix"
+      - "traefik.http.middlewares.ojs2-replacepathregex.replacepathregex.regex=^/ojs2/(.*)"
+      - "traefik.http.middlewares.ojs2-replacepathregex.replacepathregex.replacement=/$$1"
+      - "traefik.http.routers.ojs2.middlewares=ojs2-replacepathregex"
       - "traefik.http.routers.ojs2.entrypoints=web"
       - "traefik.http.services.ojs2.loadbalancer.server.port=80"
 
@@ -155,8 +157,11 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ojs3.rule=PathPrefix(`/ojs3`)"
-      - "traefik.http.middlewares.ojs3-stripprefix.stripprefix.prefixes=/ojs3"
-      - "traefik.http.routers.ojs3.middlewares=ojs3-stripprefix"
+      - "traefik.http.middlewares.ojs3-replacepathregex.replacepathregex.regex=^/ojs3/(.*)"
+      - "traefik.http.middlewares.ojs3-replacepathregex.replacepathregex.replacement=/$$1"
+      - "traefik.http.routers.ojs3.middlewares=ojs3-replacepathregex"
+      # - "traefik.http.middlewares.ojs3-stripprefix.stripprefix.prefixes=/ojs3"
+      # - "traefik.http.routers.ojs3.middlewares=ojs3-stripprefix"
       - "traefik.http.routers.ojs3.entrypoints=web"
       - "traefik.http.services.ojs3.loadbalancer.server.port=80"
 
