@@ -45,7 +45,7 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ojs1.rule=Host(`ojs1.example.com`)"
+      - "traefik.http.routers.ojs1.rule=Host(`ojs1.ojstest.ddns.net`)"
       - "traefik.http.routers.ojs1.entrypoints=web"
       - "traefik.http.services.ojs1.loadbalancer.server.port=80"
 
@@ -90,7 +90,7 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ojs2.rule=Host(`ojs2.example.com`)"
+      - "traefik.http.routers.ojs2.rule=Host(`ojs2.ojstest.ddns.net`)"
       - "traefik.http.routers.ojs2.entrypoints=web"
       - "traefik.http.services.ojs2.loadbalancer.server.port=80"
 
@@ -135,7 +135,7 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ojs3.rule=Host(`ojs3.example.com`)"
+      - "traefik.http.routers.ojs3.rule=Host(`ojs3.ojstest.ddns.net`)"
       - "traefik.http.routers.ojs3.entrypoints=web"
       - "traefik.http.services.ojs3.loadbalancer.server.port=80"
 
