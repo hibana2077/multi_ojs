@@ -11,10 +11,12 @@ services:
     image: traefik:v2.10
     container_name: traefik
     command:
+      - "--log.level=DEBUG"
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
     ports:
       - "80:80"
       - "443:443"
