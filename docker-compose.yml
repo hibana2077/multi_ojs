@@ -83,92 +83,92 @@ services:
       - ojs1_net
     restart: always
 
-#   ojs2:
-#     user: "${OJS_USER:-root}:${OJS_GROUP:-root}"
-#     env_file:
-#       - .env.ojs2
-#     image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-3}"
-#     container_name: "ojs_app_${COMPOSE_PROJECT_NAME:-ojs2}"
-#     hostname: "${COMPOSE_PROJECT_NAME:-ojs2}"
-#     ports:
-#       - "${HTTP_PORT:-8082}:80"
-#       - "${HTTPS_PORT:-8482}:443"
-#     volumes:
-#       - /etc/localtime:/etc/localtime
-#       - ./volumes_ojs2/private:/var/www/files
-#       - ./volumes_ojs2/public:/var/www/html/public
-#       - ./volumes_ojs2/config/ojs.config.inc.php:/var/www/html/config.inc.php
-#     networks:
-#       - ojs2_net
-#     depends_on:
-#       - db2
-#     restart: always
-#     labels:
-#       - "traefik.enable=true"
-#       - "traefik.http.routers.ojs2.rule=PathPrefix(`/ojs2`)"
-#       - "traefik.http.routers.ojs2.entrypoints=web"
-#       - "traefik.http.services.ojs2.loadbalancer.server.port=80"
+  ojs2:
+    user: "${OJS_USER:-root}:${OJS_GROUP:-root}"
+    env_file:
+      - .env.ojs2
+    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-3}"
+    container_name: "ojs_app_${COMPOSE_PROJECT_NAME:-ojs2}"
+    hostname: "${COMPOSE_PROJECT_NAME:-ojs2}"
+    ports:
+      - "${HTTP_PORT:-8082}:80"
+      - "${HTTPS_PORT:-8482}:443"
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./volumes_ojs2/private:/var/www/files
+      - ./volumes_ojs2/public:/var/www/html/public
+      - ./volumes_ojs2/config/ojs.config.inc.php:/var/www/html/config.inc.php
+    networks:
+      - ojs2_net
+    depends_on:
+      - db2
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ojs2.rule=PathPrefix(`/ojs2`)"
+      - "traefik.http.routers.ojs2.entrypoints=web"
+      - "traefik.http.services.ojs2.loadbalancer.server.port=80"
 
-#   db2:
-#     image: mariadb:10.2
-#     env_file:
-#       - .env.ojs2
-#     container_name: "ojs_db_${COMPOSE_PROJECT_NAME:-ojs2}"
-#     environment:
-#       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-ojsPwd}"
-#       MYSQL_DATABASE: "${OJS_DB_NAME:-ojs}"
-#       MYSQL_USER: "${OJS_DB_USER:-ojs}"
-#       MYSQL_PASSWORD: "${OJS_DB_PASSWORD:-ojsPwd}"
-#     volumes:
-#       - ./volumes_ojs2/db:/var/lib/mysql
-#       - ./volumes_ojs2/dump:/docker-entrypoint-initdb.d
-# #      - ./volumes/logs/db:/var/log/mysql
-# #      - ./volumes/config/db.charset.conf:/etc/mysql/conf.d/charset.cnf
-#     networks:
-#       - ojs2_net
-#     restart: always
+  db2:
+    image: mariadb:10.2
+    env_file:
+      - .env.ojs2
+    container_name: "ojs_db_${COMPOSE_PROJECT_NAME:-ojs2}"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-ojsPwd}"
+      MYSQL_DATABASE: "${OJS_DB_NAME:-ojs}"
+      MYSQL_USER: "${OJS_DB_USER:-ojs}"
+      MYSQL_PASSWORD: "${OJS_DB_PASSWORD:-ojsPwd}"
+    volumes:
+      - ./volumes_ojs2/db:/var/lib/mysql
+      - ./volumes_ojs2/dump:/docker-entrypoint-initdb.d
+#      - ./volumes/logs/db:/var/log/mysql
+#      - ./volumes/config/db.charset.conf:/etc/mysql/conf.d/charset.cnf
+    networks:
+      - ojs2_net
+    restart: always
 
-#   ojs3:
-#     user: "${OJS_USER:-root}:${OJS_GROUP:-root}"
-#     env_file:
-#       - .env.ojs3
-#     image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-3}"
-#     container_name: "ojs_app_${COMPOSE_PROJECT_NAME:-ojs3}"
-#     hostname: "${COMPOSE_PROJECT_NAME:-ojs3}"
-#     ports:
-#       - "${HTTP_PORT:-8083}:80"
-#       - "${HTTPS_PORT:-8483}:443"
-#     volumes:
-#       - /etc/localtime:/etc/localtime
-#       - ./volumes_ojs3/private:/var/www/files
-#       - ./volumes_ojs3/public:/var/www/html/public
-#       - ./volumes_ojs3/config/ojs.config.inc.php:/var/www/html/config.inc.php
-#     networks:
-#       - ojs3_net
-#     depends_on:
-#       - db3
-#     restart: always
-#     labels:
-#       - "traefik.enable=true"
-#       - "traefik.http.routers.ojs3.rule=PathPrefix(`/ojs3`)"
-#       - "traefik.http.routers.ojs3.entrypoints=web"
-#       - "traefik.http.services.ojs3.loadbalancer.server.port=80"
+  ojs3:
+    user: "${OJS_USER:-root}:${OJS_GROUP:-root}"
+    env_file:
+      - .env.ojs3
+    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-3}"
+    container_name: "ojs_app_${COMPOSE_PROJECT_NAME:-ojs3}"
+    hostname: "${COMPOSE_PROJECT_NAME:-ojs3}"
+    ports:
+      - "${HTTP_PORT:-8083}:80"
+      - "${HTTPS_PORT:-8483}:443"
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./volumes_ojs3/private:/var/www/files
+      - ./volumes_ojs3/public:/var/www/html/public
+      - ./volumes_ojs3/config/ojs.config.inc.php:/var/www/html/config.inc.php
+    networks:
+      - ojs3_net
+    depends_on:
+      - db3
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ojs3.rule=PathPrefix(`/ojs3`)"
+      - "traefik.http.routers.ojs3.entrypoints=web"
+      - "traefik.http.services.ojs3.loadbalancer.server.port=80"
 
-#   db3:
-#     image: mariadb:10.2
-#     env_file:
-#       - .env.ojs3
-#     container_name: "ojs_db_${COMPOSE_PROJECT_NAME:-ojs3}"
-#     environment:
-#       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-ojsPwd}"
-#       MYSQL_DATABASE: "${OJS_DB_NAME:-ojs}"
-#       MYSQL_USER: "${OJS_DB_USER:-ojs}"
-#       MYSQL_PASSWORD: "${OJS_DB_PASSWORD:-ojsPwd}"
-#     volumes:
-#       - ./volumes_ojs3/db:/var/lib/mysql
-#       - ./volumes_ojs3/dump:/docker-entrypoint-initdb.d
-# #      - ./volumes/logs/db:/var/log/mysql
-# #      - ./volumes/config/db.charset.conf:/etc/mysql/conf.d/charset.cnf
-#     networks:
-#       - ojs3_net
-#     restart: always
+  db3:
+    image: mariadb:10.2
+    env_file:
+      - .env.ojs3
+    container_name: "ojs_db_${COMPOSE_PROJECT_NAME:-ojs3}"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-ojsPwd}"
+      MYSQL_DATABASE: "${OJS_DB_NAME:-ojs}"
+      MYSQL_USER: "${OJS_DB_USER:-ojs}"
+      MYSQL_PASSWORD: "${OJS_DB_PASSWORD:-ojsPwd}"
+    volumes:
+      - ./volumes_ojs3/db:/var/lib/mysql
+      - ./volumes_ojs3/dump:/docker-entrypoint-initdb.d
+#      - ./volumes/logs/db:/var/log/mysql
+#      - ./volumes/config/db.charset.conf:/etc/mysql/conf.d/charset.cnf
+    networks:
+      - ojs3_net
+    restart: always
