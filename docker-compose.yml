@@ -15,29 +15,29 @@ networks:
     driver: bridge
 
 services:
-  # traefik:
-  #   image: traefik:v2.10.5
-  #   container_name: traefik
-  #   command:
-  #     - "--log.level=DEBUG"
-  #     - "--api.insecure=true"
-  #     - "--providers.docker=true"
-  #     - "--providers.docker.exposedbydefault=false"
-  #     - "--entrypoints.web.address=:80"
-  #     - "--entrypoints.websecure.address=:443"
-  #     - "--accesslog=true"
-  #     - "--accesslog.filepath=/var/log/traefik/access.log"
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #     - "8080:8080" # Traefik Dashboard
-  #   volumes:
-  #     - "/var/run/docker.sock:/var/run/docker.sock"
-  #   networks:
-  #     - web
-  #     - ojs1_net
-  #     - ojs2_net
-  #     - ojs3_net
+  traefik:
+    image: traefik:v2.10.5
+    container_name: traefik
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--accesslog=true"
+      - "--accesslog.filepath=/var/log/traefik/access.log"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080" # Traefik Dashboard
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - web
+      - ojs1_net
+      - ojs2_net
+      - ojs3_net
 
   ojs1:
     env_file:
