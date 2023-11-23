@@ -80,7 +80,7 @@ services:
 #      - ./volumes/logs/db:/var/log/mysql
 #      - ./volumes/config/db.charset.conf:/etc/mysql/conf.d/charset.cnf
     networks:
-      - inside
+      - ojs1_net
     restart: always
 
   ojs2:
@@ -124,7 +124,7 @@ services:
 #      - ./volumes/logs/db:/var/log/mysql
 #      - ./volumes/config/db.charset.conf:/etc/mysql/conf.d/charset.cnf
     networks:
-      - inside
+      - ojs2_net
     restart: always
 
   ojs3:
@@ -168,5 +168,5 @@ services:
 #      - ./volumes/logs/db:/var/log/mysql
 #      - ./volumes/config/db.charset.conf:/etc/mysql/conf.d/charset.cnf
     networks:
-      - inside
+      - ojs3_net
     restart: always
