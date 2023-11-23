@@ -16,6 +16,7 @@ services:
       - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
+      - "443:443"
       - "8080:8080" # Traefik Dashboard
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
@@ -30,7 +31,7 @@ services:
     hostname: "${COMPOSE_PROJECT_NAME:-ojs1}"
     ports:
       - "${HTTP_PORT:-8081}:80"
-      - "${HTTPS_PORT:-443}:443"
+      - "${HTTPS_PORT:-8481}:443"
     volumes:
       - /etc/localtime:/etc/localtime
       - ./volumes_ojs1/private:/var/www/files
@@ -75,7 +76,7 @@ services:
     hostname: "${COMPOSE_PROJECT_NAME:-ojs2}"
     ports:
       - "${HTTP_PORT:-8082}:80"
-      - "${HTTPS_PORT:-443}:443"
+      - "${HTTPS_PORT:-8482}:443"
     volumes:
       - /etc/localtime:/etc/localtime
       - ./volumes_ojs2/private:/var/www/files
@@ -120,7 +121,7 @@ services:
     hostname: "${COMPOSE_PROJECT_NAME:-ojs3}"
     ports:
       - "${HTTP_PORT:-8083}:80"
-      - "${HTTPS_PORT:-443}:443"
+      - "${HTTPS_PORT:-8483}:443"
     volumes:
       - /etc/localtime:/etc/localtime
       - ./volumes_ojs3/private:/var/www/files
