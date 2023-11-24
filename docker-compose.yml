@@ -42,7 +42,7 @@ services:
   ojs1:
     env_file:
       - .env.ojs1
-    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-3}"
+    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-4}"
     container_name: "ojs_app_${COMPOSE_PROJECT_NAME:-ojs1}"
     hostname: "${COMPOSE_PROJECT_NAME:-ojs1}"
     ports:
@@ -90,7 +90,7 @@ services:
     user: "${OJS_USER:-root}:${OJS_GROUP:-root}"
     env_file:
       - .env.ojs2
-    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-3}"
+    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-4}"
     container_name: "ojs_app_${COMPOSE_PROJECT_NAME:-ojs2}"
     hostname: "${COMPOSE_PROJECT_NAME:-ojs2}"
     ports:
@@ -138,7 +138,7 @@ services:
     user: "${OJS_USER:-root}:${OJS_GROUP:-root}"
     env_file:
       - .env.ojs3
-    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-3}"
+    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-3_4_0-4}"
     container_name: "ojs_app_${COMPOSE_PROJECT_NAME:-ojs3}"
     hostname: "${COMPOSE_PROJECT_NAME:-ojs3}"
     ports:
