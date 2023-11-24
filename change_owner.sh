@@ -1,6 +1,7 @@
 #!/bin/bash
-# 尋找當前目錄下所有以 "ojs_app_" 為前綴的容器名稱
-container_names=$(find . -name "ojs_app_*")
+
+# 從 `docker ps` 獲取所有正在運行的容器名稱，並過濾出以 "ojs_app_" 開頭的容器
+container_names=$(docker ps --format "{{.Names}}" | grep "ojs_app_")
 
 # 需要改變權限的文件和目錄
 files=(config.inc.php public/ ../files/)
